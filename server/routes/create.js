@@ -1,4 +1,5 @@
 const express = require("express");
+const Playlist = require("../models/playlist");
 const router = express.Router();
 const Video = require("../models/video");
 
@@ -38,6 +39,28 @@ router.post("/add-video", (req, res) => {
       res.send(r);
     })
     .catch((err) => console.log(err));
+});
+
+router.post("/add-playlist", (req, res) => {
+  const playlist = new Playlist({
+    name: req.body.name,
+    videos: [],
+  });
+  playlist
+    .save()
+    .then((r) => {
+      console.log(`playlist '${req.body.name}' has been added to the db`);
+      res.send(r);
+    })
+    .catch((err) => console.log(err));
+});
+
+router.get("/all-playlists", (req, res) => {
+  Playlist.find({}, (err, playlists) => {
+    console.log("sending playlists to client...");
+    console.log(playlists);
+    res.send(playlists);
+  });
 });
 
 module.exports = router;

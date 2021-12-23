@@ -15,7 +15,7 @@ export const Create = () => {
     callAPI();
   }, []);
 
-  const handleSubmit = (event) => {
+  const addVideo = (event) => {
     event.preventDefault();
 
     const data = {
@@ -34,11 +34,38 @@ export const Create = () => {
     });
   };
 
+  const addPlaylist = (event) => {
+    event.preventDefault();
+
+    const data = {
+      name: event.target.name.value,
+    };
+
+    fetch(serverUrl + "/add-playlist", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+  };
+
+  const getPlaylists = () => {
+    return fetch(serverUrl + "/all-playlists", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((playlists) => playlists);
+  };
+
   return (
     <>
       <h1>Create a Playlist</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={addPlaylist}>
         <input id="name" type="text" placeholder="Name Playlist"></input>
+        <input type="submit"></input>
+      </form>
+      <form onSubmit={addVideo}>
         <h2>Select Videos</h2>
         <input id="url" type="text" placeholder="YouTube URL"></input>
         <input

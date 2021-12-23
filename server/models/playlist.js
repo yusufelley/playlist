@@ -9,7 +9,7 @@ const playlistSchema = new Schema(
     },
     duration: {
       type: Number,
-      requried: true,
+      requried: false,
     },
     videos: {
       type: Array,
