@@ -1,5 +1,6 @@
 const express = require("express");
-const routes = require("./routes/create");
+const createRoutes = require("./routes/create");
+const viewRoutes = require("./routes/view");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
@@ -20,4 +21,5 @@ mongoose
 
 // routes
 app.use(cors());
-app.use("/create", routes);
+app.use("/create", createRoutes);
+app.use("/view", viewRoutes);
