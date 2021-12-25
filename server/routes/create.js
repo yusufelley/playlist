@@ -1,4 +1,5 @@
 const express = require("express");
+const { findById } = require("../models/playlist");
 const Playlist = require("../models/playlist");
 const router = express.Router();
 const Video = require("../models/video");
@@ -32,6 +33,15 @@ router.post("/add-video", (req, res) => {
     startTime: req.body.startTime,
     endTime: req.body.endTime,
   });
+
+  Playlist.findOneAndUpdate(
+    { _id: req.body.playlist },
+    {
+      $push: {
+        videos: video,
+      },
+    }
+  );
 
   video
     .save()
