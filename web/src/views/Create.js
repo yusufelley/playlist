@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export const Create = () => {
+export const Create = (props) => {
   const serverUrl = "http://localhost:3001/create";
   const [currPlaylist, setCurrPlaylist] = useState(undefined);
 
@@ -40,14 +40,6 @@ export const Create = () => {
     })
       .then((res) => res.json())
       .then((playlist) => setCurrPlaylist(playlist));
-  };
-
-  const getPlaylists = () => {
-    return fetch(serverUrl + "/all-playlists", {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((playlists) => playlists);
   };
 
   return (
