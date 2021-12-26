@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Create } from "../views/Create";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 export const Library = () => {
@@ -27,9 +29,9 @@ export const Library = () => {
       <h1>Library</h1>
       <ul>
         {playlists.map((e) => (
-          <a href={"http://localhost:3001/view/playlist/" + e._id}>
+          <Link to="/create" state={{ playlistId: e._id }}>
             <li key={e._id}>{e.name}</li>
-          </a>
+          </Link>
         ))}
       </ul>
     </>

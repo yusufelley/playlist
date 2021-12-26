@@ -40,12 +40,20 @@ router.post("/add-video", (req, res) => {
       $push: {
         videos: video,
       },
+    },
+    (err, suc) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("successfully saved to playlist");
+      }
     }
   );
 
   video
     .save()
     .then((r) => {
+      console.log("video saved");
       res.send(r);
     })
     .catch((err) => console.log(err));

@@ -1,8 +1,20 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 export const Create = (props) => {
   const serverUrl = "http://localhost:3001/create";
   const [currPlaylist, setCurrPlaylist] = useState(undefined);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state) {
+      axios
+        .get("http://localhost:3001/view/playlist/" + location.state.playlistId)
+        .then((res) => setCurrPlaylist(res.data));
+    }
+  }, []);
 
   const addVideo = (event) => {
     event.preventDefault();
