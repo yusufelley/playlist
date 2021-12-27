@@ -84,11 +84,15 @@ export const Create = (props) => {
             <input type="submit"></input>
           </form>
           <h2>Playlist Structure</h2>
-          {/*
-      here we will display the current structure, eventually these will be replaced with
-      video cards that will display video thumbnail, name, selected duration, and needs
-      option to remove
-      */}
+          <ul>
+            {currPlaylist.videos.map((e) => (
+              <li>
+                Title: {e.title}, <br />
+                From: {e.startTime}s, <br />
+                To: {e.endTime}s
+              </li>
+            ))}
+          </ul>
           <button
             onClick={() => {
               console.log(currPlaylist);
