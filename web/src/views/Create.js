@@ -14,7 +14,7 @@ export const Create = (props) => {
         .get("http://localhost:3001/view/playlist/" + location.state.playlistId)
         .then((res) => setCurrPlaylist(res.data));
     }
-  }, []);
+  });
 
   const addVideo = (event) => {
     event.preventDefault();

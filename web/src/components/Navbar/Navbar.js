@@ -1,15 +1,16 @@
 import React from "react";
 import { NavItems } from "./NavItems";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
+export const Navbar = () => {
   return (
     <nav>
-      <h1>Playlist</h1>
+      <h1>Navbar</h1>
       <ul>
         {NavItems.map((e, i) => {
           return (
             <li key={i}>
-              <a>{e.title}</a>
+              <Link to={e.url}>{e.title}</Link>
             </li>
           );
         })}
