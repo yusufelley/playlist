@@ -100,4 +100,22 @@ router.delete("/delete-video/:playlistId/:vidId", (req, res) => {
     );
 });
 
+router.post("/clear-playlist/:playlistId", (req, res) => {
+  Playlist.updateOne(
+    { _id: req.params.playlistId },
+    { $set: { videos: [] } },
+    { multi: true }
+  )
+    .then((res) => {
+      console.log(
+        `Playlist stucture of playlist '${req.params.playlistId}' has been cleared`
+      );
+    })
+    .catch((err) => {
+      console.error(
+        `error clearing playlist structure of playlist '${req.params.playlistId}'`
+      );
+    });
+});
+
 module.exports = router;

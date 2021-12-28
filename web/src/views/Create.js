@@ -61,6 +61,11 @@ export const Create = (props) => {
     axios.delete(url);
   };
 
+  const clearPlaylist = (e) => {
+    const url = `http://localhost:3001/create/clear-playlist/${currPlaylist._id}`;
+    axios.post(url);
+  };
+
   return (
     <>
       {!currPlaylist ? (
@@ -108,6 +113,7 @@ export const Create = (props) => {
           >
             Save Playlist
           </button>
+          <button onClick={clearPlaylist}>Clear Playlist Structure</button>
           <p>{`playlistId: ${currPlaylist._id}`}</p>
         </div>
       )}
