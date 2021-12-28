@@ -3,6 +3,7 @@ const { findById } = require("../models/playlist");
 const Playlist = require("../models/playlist");
 const router = express.Router();
 const Video = require("../models/video");
+const mongoose = require("mongoose");
 
 router.get("/", (req, res, next) => {
   res.send("API is working properly");
@@ -79,6 +80,24 @@ router.get("/all-playlists", (req, res) => {
     console.log(playlists);
     res.send(playlists);
   });
+});
+
+router.delete("/delete-video/:playlistId/:vidId", (req, res) => {
+  Playlist.updateOne(
+    { _id: req.params.playlistId },
+    { $pull: { videos: { _id: mongoose.Types.ObjectId(req.params.vidId) } } }
+  )
+    .then((res) =>
+      console.log(
+        `Video '${req.params.vidId}' Successfully removed from playlist '${req.params.playlistId}'`
+      )
+    )
+    .catch((err) =>
+      console.log(
+        `error removing video '${req.params.vidId}' from playlist '${req.params.playlistId}'`,
+        err
+      )
+    );
 });
 
 module.exports = router;

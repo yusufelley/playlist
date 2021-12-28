@@ -10,7 +10,9 @@ export const Navbar = () => {
         {NavItems.map((e, i) => {
           return (
             <li key={i}>
-              <Link to={e.url}>{e.title}</Link>
+              <Link to={e.url} state={{}}>
+                {e.title}
+              </Link>
             </li>
           );
         })}

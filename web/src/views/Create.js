@@ -54,6 +54,13 @@ export const Create = (props) => {
       .then((playlist) => setCurrPlaylist(playlist));
   };
 
+  const deleteVideo = (e, vid) => {
+    e.preventDefault();
+    const url = `http://localhost:3001/create/delete-video/${currPlaylist._id}/${vid._id}`;
+
+    axios.delete(url);
+  };
+
   return (
     <>
       {!currPlaylist ? (
@@ -85,17 +92,18 @@ export const Create = (props) => {
           </form>
           <h2>Playlist Structure</h2>
           <ul>
-            {currPlaylist.videos.map((e) => (
-              <li>
-                Title: {e.title}, <br />
-                From: {e.startTime}s, <br />
-                To: {e.endTime}s
+            {currPlaylist.videos.map((vid) => (
+              <li key={vid._id}>
+                Title: {vid.title}, <br />
+                From: {vid.startTime}s, <br />
+                To: {vid.endTime}s{" "}
+                <button onClick={(e) => deleteVideo(e, vid)}>Delete</button>
               </li>
             ))}
           </ul>
           <button
             onClick={() => {
-              console.log(currPlaylist);
+              // console.log(currPlaylist);
             }}
           >
             Save Playlist
