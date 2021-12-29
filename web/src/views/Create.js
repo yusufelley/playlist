@@ -51,7 +51,9 @@ export const Create = (props) => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((playlist) => setCurrPlaylist(playlist));
+      .then((playlist) => {
+        setCurrPlaylist(playlist);
+      });
   };
 
   const deleteVideo = (e, vid) => {

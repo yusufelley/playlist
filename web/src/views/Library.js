@@ -20,18 +20,35 @@ export const Library = () => {
       });
   };
 
+  const deletePlaylist = (e, playlist) => {
+    console.log(playlist);
+    const url = `http://localhost:3001/create/delete-playlist/${playlist._id}`;
+    axios
+      .delete(url)
+      .then((res) => {
+        getPlaylists();
+        console.log(`Playlist '${playlist._id}' has been deleted`);
+      })
+      .catch((err) =>
+        console.error(`error deleting playlist '${playlist._id}'`)
+      );
+  };
+
   useEffect(() => {
     getPlaylists();
-  }, []);
+  }, [playlists.length]);
 
   return (
     <>
       <h1>Library</h1>
       <ul>
-        {playlists.map((e) => (
-          <Link to="/create" state={{ playlistId: e._id }}>
-            <li key={e._id}>{e.name}</li>
-          </Link>
+        {playlists.map((playlist) => (
+          <>
+            <Link to="/create" state={{ playlistId: playlist._id }}>
+              <li key={playlist._id}>{playlist.name}</li>
+            </Link>
+            <button onClick={(e) => deletePlaylist(e, playlist)}>Delete</button>
+          </>
         ))}
       </ul>
     </>

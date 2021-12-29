@@ -100,6 +100,18 @@ router.delete("/delete-video/:playlistId/:vidId", (req, res) => {
     );
 });
 
+router.delete("/delete-playlist/:playlistId", (req, res) => {
+  console.log(req.params);
+  Playlist.deleteOne({ _id: req.params.playlistId })
+    .then((res) => {
+      Playlist.find({}).then((res) => console.log(res));
+      console.log(`playlist '${req.params.playlistId} has been deleted'`);
+    })
+    .catch((err) =>
+      console.log(`error deleting playlist '${req.params.playlistId}'`)
+    );
+});
+
 router.post("/clear-playlist/:playlistId", (req, res) => {
   Playlist.updateOne(
     { _id: req.params.playlistId },
