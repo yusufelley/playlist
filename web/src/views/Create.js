@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 export const Create = (props) => {
@@ -108,13 +109,9 @@ export const Create = (props) => {
               </li>
             ))}
           </ul>
-          <button
-            onClick={() => {
-              // console.log(currPlaylist);
-            }}
-          >
-            Save Playlist
-          </button>
+          <Link to="/">
+            <button>Save Playlist</button>
+          </Link>
           <button onClick={clearPlaylist}>Clear Playlist Structure</button>
           <p>{`playlistId: ${currPlaylist._id}`}</p>
         </div>
