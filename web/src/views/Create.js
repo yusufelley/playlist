@@ -69,6 +69,8 @@ export const Create = (props) => {
     axios.post(url);
   };
 
+  const playVideo = (e) => {};
+
   return (
     <>
       {!currPlaylist ? (
@@ -113,6 +115,9 @@ export const Create = (props) => {
             <button>Save Playlist</button>
           </Link>
           <button onClick={clearPlaylist}>Clear Playlist Structure</button>
+          <Link to="/play" state={currPlaylist}>
+            <button>Play</button>
+          </Link>
           <p>{`playlistId: ${currPlaylist._id}`}</p>
         </div>
       )}
