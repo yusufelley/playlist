@@ -1,0 +1,31 @@
+.play {
+  /* shape */
+  border-radius: 50%;
+  height: 2.5rem;
+  width: 2.5rem;
+
+  /* m and p */
+  padding: 0.25rem;
+
+  /* color */
+  background: #5dbe7c;
+
+  transition: all 150ms ease-in-out;
+}
+
+.play:hover {
+  background: #48b96c;
+  height: 2.6rem;
+  width: 2.6rem;
+  transition: all 150ms ease-in-out;
+}
+
+.play-icon {
+  font-size: 2rem;
+}
+
+.mid-right {
+  position: absolute;
+  right: 7px;
+  bottom: 25%;
+}

@@ -1,0 +1,28 @@
+.delete-button {
+  /* shape */
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+
+  /* m and p */
+  padding: 0.25rem;
+
+  /* color */
+  background: rgba(255, 0, 0, 0);
+  color: black;
+
+  transition: all 0.1s ease-out;
+}
+
+.delete-button:hover {
+  background: rgba(255, 0, 0, 1);
+  color: white;
+
+  transition: all 0.1s ease-in;
+}
+
+.top-right {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+}
