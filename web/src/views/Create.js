@@ -75,7 +75,7 @@ export const Create = (props) => {
     <>
       {!currPlaylist ? (
         <div>
-          <h1>Create a Playlist</h1>
+          <h1 className="under-nav">Create a Playlist</h1>
           <form onSubmit={addPlaylist}>
             <input id="name" type="text" placeholder="Name Playlist"></input>
             <input type="submit"></input>

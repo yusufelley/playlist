@@ -24,6 +24,38 @@ button {
   -moz-appearance: none;
 }
 
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+input[type="text"] {
+  padding: 0.25rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-bottom: solid;
+  border-width: 0.15rem;
+  border-color: #324b4b;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #6ce5ad;
+}
+
 .v-center {
   vertical-align: text-bottom;
+}
+
+.under-nav {
+  margin-top: 64px;
 }

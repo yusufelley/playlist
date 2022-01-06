@@ -69,7 +69,7 @@ export const Library = () => {
 
   return (
     <>
-      <h1>Library</h1>
+      <h1 className="under-nav">Library</h1>
       <ul>
         {playlists.map((playlist) => (
           <>
