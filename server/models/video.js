@@ -20,6 +20,10 @@ const videoSchema = new Schema(
       type: Number,
       required: true,
     },
+    playlist: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );

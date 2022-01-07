@@ -33,6 +33,7 @@ router.post("/add-video", (req, res) => {
     url: req.body.url,
     startTime: req.body.startTime,
     endTime: req.body.endTime,
+    playlist: req.body.playlist,
   });
 
   Playlist.findOneAndUpdate(

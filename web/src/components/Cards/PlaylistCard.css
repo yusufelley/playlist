@@ -4,6 +4,7 @@
   border-radius: 0.5rem;
   width: clamp(100px, 250px, 500px);
   position: relative;
+  margin: 1rem;
 }
 
 .title {

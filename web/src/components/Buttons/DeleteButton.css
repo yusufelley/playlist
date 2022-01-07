@@ -26,3 +26,9 @@
   top: 7px;
   right: 7px;
 }
+
+.mid-right {
+  position: absolute;
+  top: 25%;
+  right: 7px;
+}
