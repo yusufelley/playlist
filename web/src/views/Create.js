@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { API_URL } from "../utils/dbActions";
 import axios from "axios";
 import { VideoCard } from "../components/Cards/VideoCard";
 import {
@@ -18,7 +19,7 @@ export const Create = (props) => {
   useEffect(() => {
     if (location.state) {
       axios
-        .get("http://localhost:3001/view/playlist/" + location.state.playlistId)
+        .get(`${API_URL}view/playlist/${location.state.playlistId}`)
         .then((res) => setCurrPlaylist(res.data));
     }
   });

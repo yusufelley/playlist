@@ -1,13 +1,15 @@
 import axios from "axios";
 import { convertHMS } from "./converHMS";
 
+export const API_URL = "http://localhost:3001/";
+
 export const getPlaylists = () => {
-  return axios.get("http://localhost:3001/create/all-playlists");
+  return axios.get(`${API_URL}create/all-playlists`);
 };
 
 export const deleteVideo = (e, vid, currPlaylistId) => {
   e.preventDefault();
-  const url = `http://localhost:3001/create/delete-video/${currPlaylistId}/${vid._id}`;
+  const url = `${API_URL}create/delete-video/${currPlaylistId}/${vid._id}`;
 
   return axios.delete(url);
 };
@@ -19,7 +21,7 @@ export const addPlaylist = (event) => {
     name: event.target.name.value,
   };
 
-  return fetch("http://localhost:3001/create//add-playlist", {
+  return fetch(`${API_URL}create//add-playlist`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -30,7 +32,7 @@ export const addPlaylist = (event) => {
 
 export const deletePlaylist = (e, playlist) => {
   console.log(playlist);
-  const url = `http://localhost:3001/create/delete-playlist/${playlist._id}`;
+  const url = `${API_URL}create/delete-playlist/${playlist._id}`;
   return axios.delete(url);
 };
 
@@ -45,7 +47,7 @@ export const addVideo = (event, currPlaylist) => {
     playlist: currPlaylist._id,
   };
 
-  fetch("http://localhost:3001/create/add-video", {
+  fetch(`${API_URL}create/add-video`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -55,7 +57,7 @@ export const addVideo = (event, currPlaylist) => {
 };
 
 export const clearPlaylist = (e, currPlaylist) => {
-  const url = `http://localhost:3001/create/clear-playlist/${currPlaylist._id}`;
+  const url = `${API_URL}create/clear-playlist/${currPlaylist._id}`;
   axios.post(url);
 };
 
