@@ -1,7 +1,7 @@
 import "./PlayButton.css";
 import { useNavigate } from "react-router-dom";
 
-export const PlayButton = ({ navState }) => {
+export const PlayButton = ({ navState, className }) => {
   const nav = useNavigate();
 
   const handleClick = () => {
@@ -9,7 +9,7 @@ export const PlayButton = ({ navState }) => {
   };
 
   return (
-    <button className="play mid-right" onClick={handleClick}>
+    <button className={`play ${className}`} onClick={handleClick}>
       <i className="material-icons-round play-icon v-center">play_arrow</i>
     </button>
   );

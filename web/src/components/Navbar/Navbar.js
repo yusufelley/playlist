@@ -2,6 +2,7 @@ import React from "react";
 import { NavItems } from "./NavItems";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import { BackButton } from "../Buttons/BackButton";
 
 export const Navbar = () => {
   return (

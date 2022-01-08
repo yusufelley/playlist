@@ -2,7 +2,7 @@
   background: #ecf0f1;
   padding: 1rem;
   border-radius: 0.5rem;
-  width: clamp(100px, 250px, 500px);
+  min-width: 300px;
   position: relative;
   margin: 1rem;
 }

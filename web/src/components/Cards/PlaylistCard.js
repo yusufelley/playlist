@@ -22,7 +22,7 @@ export const PlaylistCard = ({ duration, title, linkProps, playlist }) => {
         <div className="title">{title}</div> <br />
       </Link>
       <div className="text">{`Duration: ${duration}`}</div> <br />
-      <PlayButton navState={playlist} />
+      <PlayButton className="mid-right" navState={playlist} />
     </div>
   );
 };

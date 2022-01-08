@@ -4,5 +4,4 @@ export const NavItems = [
     title: "Library",
     url: "/library",
   },
-  { title: "Play", url: "/play" },
 ];

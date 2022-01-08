@@ -9,6 +9,7 @@ import {
   addPlaylist,
   clearPlaylist,
 } from "../utils/dbActions";
+import { PlayButton } from "../components/Buttons/PlayButton";
 
 export const Create = (props) => {
   const [currPlaylist, setCurrPlaylist] = useState(undefined);
@@ -77,16 +78,10 @@ export const Create = (props) => {
               // </li>
             ))}
           </ul>
-
-          <Link to="/">
-            <button>Save Playlist</button>
-          </Link>
           <button onClick={(e) => clearPlaylist(e, currPlaylist)}>
             Clear Playlist Structure
           </button>
-          <Link to="/play" state={currPlaylist}>
-            <button>Play</button>
-          </Link>
+          <PlayButton navState={currPlaylist} />
           <p>{`playlistId: ${currPlaylist._id}`}</p>
         </div>
       )}
