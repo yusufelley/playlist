@@ -11,10 +11,12 @@ import {
   clearPlaylist,
 } from "../utils/dbActions";
 import { PlayButton } from "../components/Buttons/PlayButton";
+import { Loading } from "../components/Loading";
 
 export const Create = (props) => {
   const [currPlaylist, setCurrPlaylist] = useState(undefined);
   const location = useLocation();
+  const [loading, setLoading] = useState(false);
 
   console.log(`The current playlist is set to: '${currPlaylist}'`);
 
@@ -26,16 +28,27 @@ export const Create = (props) => {
           setCurrPlaylist(res.data.val);
         });
     }
-  });
+  }, []); //TODO this is not updating in real time
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     console.log(`Creating new playlist (${e.target.name.value})...`);
     addPlaylist(e)
       .then((res) => res.json())
       .then((playlist) => {
         setCurrPlaylist(playlist);
+        setLoading(false);
       });
+  };
+
+  const handleNewVideo = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    addVideo(e, currPlaylist).then((res) => {
+      console.log("setLoading to false");
+      setLoading(false);
+    });
   };
 
   return (
@@ -45,15 +58,12 @@ export const Create = (props) => {
           <h1 className="header-text">Create a Playlist</h1>
           <form onSubmit={handleSubmit}>
             <input id="name" type="text" placeholder="Name Playlist"></input>
-            <input type="submit"></input>
+            {loading ? <Loading /> : <input type="submit"></input>}
           </form>
         </div>
       ) : (
         <div>
-          <form
-            className="under-nav  container"
-            onSubmit={(e) => addVideo(e, currPlaylist)}
-          >
+          <form className="under-nav  container" onSubmit={handleNewVideo}>
             <h2 className="header-text">Select Videos</h2>
             <input id="name" type="text" placeholder="Name Video"></input>
 
@@ -68,7 +78,7 @@ export const Create = (props) => {
               type="text"
               placeholder="Specify end time"
             ></input>
-            <input type="submit"></input>
+            {loading ? <Loading /> : <input type="submit"></input>}
           </form>
 
           <h2>Playlist Structure</h2>

@@ -47,7 +47,7 @@ export const addVideo = (event, currPlaylist) => {
     playlist: currPlaylist._id,
   };
 
-  fetch(`${API_URL}create/add-video`, {
+  return fetch(`${API_URL}create/add-video`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -58,7 +58,7 @@ export const addVideo = (event, currPlaylist) => {
 
 export const clearPlaylist = (e, currPlaylist) => {
   const url = `${API_URL}create/clear-playlist/${currPlaylist._id}`;
-  axios.post(url);
+  return axios.post(url);
 };
 
 export const getPlaylistDuration = (playlist) => {

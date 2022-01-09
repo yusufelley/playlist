@@ -1,7 +1,7 @@
 .playlist-card-container {
   display: block flex;
   flex-direction: column;
-  background: rgba(29, 29, 78, 0.1);
+  background: none;
   border-radius: 0.5rem;
   overflow: scroll;
   overflow-x: hidden;
