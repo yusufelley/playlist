@@ -16,28 +16,34 @@ export const Create = (props) => {
   const [currPlaylist, setCurrPlaylist] = useState(undefined);
   const location = useLocation();
 
+  console.log(`The current playlist is set to: '${currPlaylist}'`);
+
   useEffect(() => {
-    if (location.state) {
+    if (location.state.playlistId) {
       axios
         .get(`${API_URL}view/playlist/${location.state.playlistId}`)
-        .then((res) => setCurrPlaylist(res.data));
+        .then((res) => {
+          setCurrPlaylist(res.data.val);
+        });
     }
-  });
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(`Creating new playlist (${e.target.name.value})...`);
+    addPlaylist(e)
+      .then((res) => res.json()) //TODO doesn't work
+      .then((playlist) => {
+        setCurrPlaylist(playlist);
+      });
+  };
 
   return (
     <>
       {!currPlaylist ? (
         <div>
           <h1 className="under-nav">Create a Playlist</h1>
-          <form
-            onSubmit={(e) =>
-              addPlaylist(e)
-                .then((res) => res.json()) //TODO doesn't work
-                .then((playlist) => {
-                  setCurrPlaylist(playlist);
-                })
-            }
-          >
+          <form onSubmit={handleSubmit}>
             <input id="name" type="text" placeholder="Name Playlist"></input>
             <input type="submit"></input>
           </form>

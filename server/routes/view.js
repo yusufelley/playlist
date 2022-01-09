@@ -5,14 +5,15 @@ const Video = require("../models/video");
 
 router.get("/playlist/:id", (req, res) => {
   const id = req.params.id;
-  // console.log(id);
+  console.log(`Attempting to fetch playlist: '${id}'...`);
   Playlist.findById(id)
     .then((result) => {
-      res.send(result);
+      console.log(`SUCCESS | Sending Playlist: '${result._id}'`);
+      res.send({ val: result });
     })
     .catch((err) => {
-      console.log(`playlist with id: '${id}' could not be found`);
-      res.send();
+      console.warn(`ERROR | Requested Playlist: '${id}', could not be found`);
+      res.send({ val: undefined }); // needs to be in the form of JSON
     });
 });
 
