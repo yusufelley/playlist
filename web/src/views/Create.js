@@ -26,23 +26,23 @@ export const Create = (props) => {
           setCurrPlaylist(res.data.val);
         });
     }
-  }, []);
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(`Creating new playlist (${e.target.name.value})...`);
     addPlaylist(e)
-      .then((res) => res.json()) //TODO doesn't work
+      .then((res) => res.json())
       .then((playlist) => {
         setCurrPlaylist(playlist);
       });
   };
 
   return (
-    <>
+    <div>
       {!currPlaylist ? (
-        <div>
-          <h1 className="under-nav">Create a Playlist</h1>
+        <div className="container under-nav">
+          <h1 className="header-text">Create a Playlist</h1>
           <form onSubmit={handleSubmit}>
             <input id="name" type="text" placeholder="Name Playlist"></input>
             <input type="submit"></input>
@@ -50,8 +50,11 @@ export const Create = (props) => {
         </div>
       ) : (
         <div>
-          <form onSubmit={(e) => addVideo(e, currPlaylist)}>
-            <h2>Select Videos</h2>
+          <form
+            className="under-nav  container"
+            onSubmit={(e) => addVideo(e, currPlaylist)}
+          >
+            <h2 className="header-text">Select Videos</h2>
             <input id="name" type="text" placeholder="Name Video"></input>
 
             <input id="url" type="text" placeholder="YouTube URL"></input>
@@ -92,6 +95,6 @@ export const Create = (props) => {
           <p>{`playlistId: ${currPlaylist._id}`}</p>
         </div>
       )}
-    </>
+    </div>
   );
 };

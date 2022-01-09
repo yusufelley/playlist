@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { PlaylistCard } from "../components/Cards/PlaylistCard";
 import axios from "axios";
 import { getPlaylistDuration, getPlaylists } from "../utils/dbActions";
+import "./Library.css";
 
 export const Library = () => {
   const [playlists, setPlaylists] = useState([]);
@@ -21,9 +22,9 @@ export const Library = () => {
   }, [playlists.length]);
 
   return (
-    <>
-      <h1 className="under-nav">Library</h1>
-      <ul>
+    <div className="container under-nav">
+      <h1 className="header-text">Library</h1>
+      <ul className="playlist-card-container">
         {playlists.map((playlist) => (
           <>
             <PlaylistCard
@@ -54,6 +55,6 @@ export const Library = () => {
           </>
         ))}
       </ul>
-    </>
+    </div>
   );
 };

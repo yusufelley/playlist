@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import YouTube from "react-youtube";
 import { useLocation } from "react-router-dom";
+import "./Play.css";
 const getYoutubeID = require("get-youtube-id");
 
 export const Play = () => {
@@ -51,12 +52,13 @@ export const Play = () => {
   };
 
   return (
-    <>
+    <div className="player-wrapper under-nav">
       <YouTube
+        className="player"
         videoId={playerSettings.id}
         opts={playerSettings.opts}
         onEnd={playNextVideo}
       />
-    </>
+    </div>
   );
 };

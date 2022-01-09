@@ -1,10 +1,11 @@
 * {
   /* font-family: "Roboto", sans-serif; */
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
-div {
-  display: inline-block;
+:root {
+  --main-txt-color: #000000;
+  --primary-color: #0ea5e9;
 }
 
 button {
@@ -39,17 +40,32 @@ ul {
 }
 
 input[type="text"] {
-  padding: 0.25rem;
+  padding: 0.5rem;
   margin-bottom: 1rem;
-  border: none;
-  border-bottom: solid;
+  border: solid rgba(153, 153, 153, 0.4) 1px;
+  border-radius: 0.5rem;
   border-width: 0.15rem;
-  border-color: #324b4b;
+}
+
+input[type="submit"] {
+  display: inline-block;
+  border: solid rgba(153, 153, 153, 0.4) 1px;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  margin-left: 1rem;
+  text-decoration: none;
+  background: var(--primary-color);
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 input[type="text"]:focus {
   outline: none;
-  border-color: #6ce5ad;
+  border-color: var(--primary-color);
 }
 
 .v-center {
@@ -58,4 +74,25 @@ input[type="text"]:focus {
 
 .under-nav {
   margin-top: 64px;
+}
+
+.container {
+  background: #ffffff;
+  padding: 1rem;
+  border: solid rgba(153, 153, 153, 0.4) 1px;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.header-text {
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+body {
+  background: linear-gradient(#f1f5f9, #eff6ff);
+}
+
+html {
+  height: 100%;
 }

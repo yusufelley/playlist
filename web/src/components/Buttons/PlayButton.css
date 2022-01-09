@@ -8,7 +8,8 @@
   padding: 0.25rem;
 
   /* color */
-  background: #5dbe7c;
+  /* background: #5dbe7c; */
+  background: #f43f5e;
 
   transition: all 150ms ease-in-out;
 }

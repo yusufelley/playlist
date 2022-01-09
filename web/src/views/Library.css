@@ -1,0 +1,21 @@
+.playlist-card-container {
+  display: block flex;
+  flex-direction: column;
+  background: rgba(29, 29, 78, 0.1);
+  border-radius: 0.5rem;
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 80vh;
+}
+
+* {
+  -ms-overflow-style: none;
+  overflow-y: hidden;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+.main-text {
+  color: var(--main-txt-color);
+}

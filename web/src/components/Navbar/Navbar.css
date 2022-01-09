@@ -1,5 +1,5 @@
 .navbar {
-  background: #7679cd;
+  background: none;
   height: 64px;
   width: 100vw;
   position: fixed;
@@ -20,15 +20,15 @@
 }
 
 .nav-item-text {
-  color: #f1f1f1;
+  color: var(--main-txt-color);
 }
 
 .nav-item-text:hover {
   font-weight: bold;
-  color: #f9f871;
+  color: var(--primary-color);
 }
 
 .logo-text {
-  color: #f1f1f1;
-  margin: auto;
+  color: var(--main-txt-color);
+  margin: 1rem;
 }
